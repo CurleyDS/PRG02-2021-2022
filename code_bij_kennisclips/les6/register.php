@@ -3,6 +3,7 @@
 if (isset($_POST['submit'])) {
     //Require database in this file & image helpers
     require_once "includes/database.php";
+    /** @var db $db */
 
     //Postback with the data showed to the user, first retrieve data from 'Super global'
     $firstname  = mysqli_real_escape_string($db, $_POST['firstname']);
