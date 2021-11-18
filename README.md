@@ -30,8 +30,7 @@ Is bovenstaande je al bekend? Volg dan de [Advanced cursus](advanced)
 - Om up-to-date te blijven met deze repository heb je [GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) nodig.
 
 **Clone maken van deze repository op jouw harde schijf**
-- Ga in PHPStorm naar VCS > Get from Version Control
-- Version control: **Git**
+- Ga in PHPStorm naar Git > Clone
 - Url: **https://github.com/HR-CMGT/PRG02-2021-2022**
 - Directory: [Link naar htdocs in xampp folder]/PRG02
 
