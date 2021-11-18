@@ -2,8 +2,8 @@
 /*
  * a function must be declared with the word 'function'
  * a function can be declared anywhere you like
- * $characters is the parameter of this function.
- * In this case, when called, the function is given am array of characters
+ * a function can have parameters
+ * a function ca return a result
  */
 
 /**
