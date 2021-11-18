@@ -3,7 +3,7 @@
  * a function must be declared with the word 'function'
  * a function can be declared anywhere you like
  * a function can have parameters
- * a function ca return a result
+ * a function can return a result
  */
 
 /**
