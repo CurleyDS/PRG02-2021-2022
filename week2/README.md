@@ -11,7 +11,7 @@
 
 **Music collection - Index**
 
-Kopieer de index.php van opdracht 1.3. Zet de array met alle albuminformatie in een aparte PHP-bestand. 
+Kopieer de index.php van opdracht 1.3. De data van de albuminformatie staat al in een apart bestand in de map includes/music-data.php. 
 Importeer deze data in de index.php pagina met behulp van de functie ```require_once()```
 
 ## Opdracht 2.2
