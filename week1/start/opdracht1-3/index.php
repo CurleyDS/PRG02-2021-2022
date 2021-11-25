@@ -8,70 +8,70 @@ $musicAlbums =
             "album" => "Rumours",
             "release_date" => "4-2-1977",
             "tracks" => 11,
-            "genre" => ""
+            "genre" => "Rock"
         ],
         [
             "artist" => "Hootie And The Blowfish",
             "album" => "Cracked Rear View",
             "release_date" => "5-7-1994",
             "tracks" => 12,
-            "genre" => ""
+            "genre" => "Rock"
         ],
         [
             "artist" => "Garth Brooks",
             "album" => "Double Live",
             "release_date" => "2-11-2007",
             "tracks" => 2,
-            "genre" => ""
+            "genre" => "Country"
         ],
         [
             "artist" => "AC/DC",
             "album" => "Back In Black",
             "release_date" => "25-7-1980",
             "tracks" => 10,
-            "genre" => ""
+            "genre" => "Hard Rock"
         ],
         [
             "artist" => "Pink Floyd",
             "album" => "The Wall",
             "release_date" => "30-11-1979",
             "tracks" => 26,
-            "genre" => ""
+            "genre" => "Progressive Rock"
         ],
         [
             "artist" => "Led Zeppelin",
             "album" => "Led Zeppelin IV (Remaster)",
             "release_date" => "8-11-1971",
             "tracks" => 8,
-            "genre" => ""
+            "genre" => "Heavy Metal"
         ],
         [
             "artist" => "Billy Joel",
             "album" => "Greatest Hits Volume 1 & Volume 2",
             "release_date" => "7-12-2006",
             "tracks" => 26,
-            "genre" => ""
+            "genre" => "Rock"
         ],
         [
             "artist" => "Eagles",
             "album" => "Hotel California",
             "release_date" => "8-12-1976",
             "tracks" => 9,
-            "genre" => ""
+            "genre" => "Blues"
         ],
         [
             "artist" => "Michael Jackson",
             "album" => "Thriller",
             "release_date" => "30-11-1982",
             "tracks" => 9,
-            "genre" => "Hiphop"
+            "genre" => "Disco"
         ],
         [
             "artist" => "LP",
             "album" => "Their Greatest Hits 1971-1975",
             "release_date" => "29-11-2006",
             "tracks" => 10,
-            "genre" => ""
+            "genre" => "Rock"
         ]
     ];
 ?>
