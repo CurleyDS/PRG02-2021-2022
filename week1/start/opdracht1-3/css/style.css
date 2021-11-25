@@ -7,11 +7,12 @@ tfoot td {
     font-weight: bold;
 }
 
-tr.odd {
+tbody tr:nth-child(odd) {
     background-color: lightgrey;
 }
 
-/* This would be the way to go without PHP */
-tbody tr:nth-child(odd) {
-    /*background-color: lightgrey;*/
-}
+/* This would be the way to go with PHP */
+/*tr.odd {*/
+/*    background-color: lightgrey;*/
+/*}*/
+
