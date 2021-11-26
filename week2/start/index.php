@@ -1,5 +1,5 @@
 <?php
-
+require_once 'includes/music-data.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -32,7 +32,18 @@
     </tr>
     </tfoot>
     <tbody>
-
+        <!-- Loop through all albums in the collection -->
+        <?php foreach ($musicAlbums as $key => $musicAlbum) { ?>
+            <tr>
+                <td><?= $key +1 ?></td>
+                <td><?= $musicAlbum['artist'] ?></td>
+                <td><?= $musicAlbum['album'] ?></td>
+                <td><?= $musicAlbum['genre'] ?></td>
+                <td><?= $musicAlbum['year'] ?></td>
+                <td><?= $musicAlbum['tracks'] ?></td>
+                <td><a href="details.php?index=<?= $key ?>">details</a></td>
+            </tr>
+        <?php } ?>
     </tbody>
 </table>
 </body>

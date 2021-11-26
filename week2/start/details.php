@@ -1,5 +1,7 @@
 <?php
+require_once 'includes/music-data.php';
 
+$musicAlbum = $musicAlbums[$_GET['index']];
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,11 +15,11 @@
 </head>
 <body>
 <section>
-    <h1>[ALBUMNAAM]</h1>
+    <h1>[<?= $musicAlbum['album'] ?>]</h1>
     <ul>
-        <li>Genre:</li>
-        <li>Year:</li>
-        <li>Tracks:</li>
+        <li>Genre: <?= $musicAlbum['genre'] ?></li>
+        <li>Year: <?= $musicAlbum['year'] ?></li>
+        <li>Tracks: <?= $musicAlbum['tracks'] ?></li>
     </ul>
 </section>
 <div>
