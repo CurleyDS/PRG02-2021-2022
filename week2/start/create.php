@@ -40,7 +40,7 @@
 		<title>Music Collection - Create new album</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	</head>
-	<body >
+	<body>
         <section>
             <h1>Create new album</h1>
             <form action="" method="post">
@@ -57,8 +57,7 @@
                 <div>
                     <label for="genre" title="The genre of the album.">Genre:</label>
                     <select name="genre" id="genre" title="The genre of the album." required>
-                        <option value="Select the genre"></option>
-                        <!-- Loop through all albums in the collection -->
+                        <!-- Loop through all genres -->
                         <?php foreach ($genres as $genre) { ?>
                             <option value="<?= $genre['value']; ?>"><?= $genre['name']; ?></option>
                         <?php } ?>
