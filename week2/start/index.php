@@ -13,6 +13,7 @@ require_once 'includes/music-data.php';
 </head>
 <body>
 <h1>Music Collection</h1>
+<a href="create.php">Create</a>
 <table>
     <thead>
     <tr>
@@ -46,6 +47,5 @@ require_once 'includes/music-data.php';
         <?php } ?>
     </tbody>
 </table>
-<a href="create.php">Create</a>
 </body>
 </html>
