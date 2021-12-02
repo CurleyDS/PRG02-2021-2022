@@ -33,7 +33,7 @@
     <tbody>
     <?php foreach ( as ) { ?>
         <tr>
-            <td class="image"><img src="images/" alt=""/></td>
+            <td class="image"><img src="images" alt=""/></td>
             <td></td>
             <td></td>
             <td></td>
