@@ -46,5 +46,6 @@ require_once 'includes/music-data.php';
         <?php } ?>
     </tbody>
 </table>
+<a href="create.php">Create</a>
 </body>
 </html>
