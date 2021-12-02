@@ -1,4 +1,4 @@
-# Huiswerk week 2
+# Advanced week 2
 
 ## Onderwerpen
 - [Extends](http://php.net/manual/en/keyword.extends.php)
