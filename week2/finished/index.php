@@ -1,8 +1,10 @@
 <?php
 // import multidimensional array with the music collection data
+require_once 'includes/music-data.php';
+
 
 // reference to $musicAlbums
-
+/** @var array $musicAlbums */
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,6 +16,7 @@
 <body>
 <h1>Music Collection</h1>
 <hr/>
+<a href="create.php">New Album</a>
 <table>
     <thead>
     <tr>
@@ -23,6 +26,7 @@
         <th>Genre</th>
         <th>Year</th>
         <th>Tracks</th>
+        <th></th>
     </tr>
     </thead>
     <tfoot>
@@ -39,6 +43,7 @@
             <td><?= $album['genre'] ?></td>
             <td><?= $album['year'] ?></td>
             <td><?= $album['tracks'] ?></td>
+            <td><a href="details.php?index=<?= $index ?>">Details</a></td>
         </tr>
     <?php } ?>
     </tbody>
