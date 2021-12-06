@@ -5,7 +5,8 @@ require_once "includes/database.php";
 
 //Get the result set from the database with a SQL query
 $query = "SELECT * FROM albums";
-$result = mysqli_query($db, $query);
+$result = mysqli_query($db, $query)
+    or die('Error '.mysqli_error($db).' with query '.$query);
 
 //Loop through the result to create a custom array
 $musicAlbums = [];
