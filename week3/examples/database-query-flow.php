@@ -1,10 +1,4 @@
 <?php
-if(isset($_POST['submit'])) {
-    $artist = $_POST['artist'];
-}
-?>
-
-<?php
 // Gegevens voor de connectie
 $host       = 'localhost';
 $username   = 'root';
