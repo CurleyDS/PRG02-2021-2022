@@ -14,7 +14,7 @@ wordt, zal de reservering in zijn geheel uit de database verwijderd worden.
 
 ## Opdracht 4.2
 
-**Music collection - Create**
+**Create**
 
 Om het makkelijk voor jezelf te houden kan je deze opdracht in 3 stappen oplossen. 
 
