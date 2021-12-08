@@ -1,4 +1,4 @@
-# Huiswerk week 1
+# Advanced week 1
 
 ## Onderwerpen
 - [OOP PHP](http://www.php.net/manual/en/language.oop5.php)
