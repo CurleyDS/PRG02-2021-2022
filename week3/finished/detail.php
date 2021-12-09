@@ -1,6 +1,5 @@
 <?php
 //Require database in this file
-
 /** @var $db */
 require_once "includes/database.php";
 
