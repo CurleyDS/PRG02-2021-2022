@@ -3,11 +3,12 @@
 /** @var $db */
 require_once "includes/database.php";
 
+//If the ID isn't given, redirect to the homepage
 if (!isset($_GET['id']) || $_GET['id'] === '') {
-    // redirect to index.php
     header('Location: index.php');
     exit;
 }
+
 //Retrieve the GET parameter from the 'Super global'
 $albumId = $_GET['id'];
 
@@ -15,12 +16,13 @@ $albumId = $_GET['id'];
 $query = "SELECT * FROM albums WHERE id = " . $albumId;
 $result = mysqli_query($db, $query);
 
-//Check if the album exists in the database
+//If the album doesn't exist, redirect back to the homepage
 if (mysqli_num_rows($result) == 0) {
-    // redirect to index.php
     header('Location: index.php');
     exit;
 }
+
+//Transform the row in the DB table to a PHP array
 $album = mysqli_fetch_assoc($result);
 
 //Close connection
