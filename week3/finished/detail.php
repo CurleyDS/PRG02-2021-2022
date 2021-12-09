@@ -3,12 +3,11 @@
 /** @var $db */
 require_once "includes/database.php";
 
-if (!isset($_GET['index']) || $_GET['id'] === '') {
+if (!isset($_GET['id']) || $_GET['id'] === '') {
     // redirect to index.php
     header('Location: index.php');
     exit;
 }
-
 //Retrieve the GET parameter from the 'Super global'
 $albumId = $_GET['id'];
 
