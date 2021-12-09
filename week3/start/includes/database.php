@@ -2,9 +2,9 @@
 
 // General settings
 $host       = "localhost";
-$database   = "music_collection";
+$database   = "booking_system";
 $user       = "root";
-$password   = "";
+$password   = "mysql";
 
 $db = mysqli_connect($host, $user, $password, $database)
     or die("Error: " . mysqli_connect_error());;
