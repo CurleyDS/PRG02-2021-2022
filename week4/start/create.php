@@ -1,5 +1,10 @@
 <?php
-
+    session_start();
+    $error = null;
+    if (isset($_SESSION['message'])) {
+        $error = $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -9,33 +14,28 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-    <h1>Create album</h1>
+    <h1>Add trial</h1>
 
-    <form action="" method="post">
+    <form action="index.php?function=addTrial" method="post">
         <div>
-            <label for="artist">Artist</label>
-            <input id="artist" type="text" name="artist" value=""/>
-            <span>[Hier komt de eventuele error]</span>
+            <label for="lesson">Lesson:</label>
+            <input id="lesson" type="number" name="lesson" min="1" required/>
+            <span><?= $error == 'Lesson invalid!' ? $error : '' ?></span>
         </div>
         <div>
-            <label for="album">Album</label>
-            <input id="album" type="text" name="album" value=""/>
-            <span>[Hier komt de eventuele error]</span>
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" value="" required/>
+            <span><?= $error == 'Name invalid!' ? $error : '' ?></span>
         </div>
         <div>
-            <label for="genre">Genre</label>
-            <input id="genre" type="text" name="genre" value=""/>
-            <span>[Hier komt de eventuele error]</span>
+            <label for="phone">Phone number</label>
+            <input id="phone" type="text" name="phone" value="" required/>
+            <span><?= $error == 'Phone number invalid!' ? $error : '' ?></span>
         </div>
         <div>
-            <label for="year">Year</label>
-            <input id="year" type="text" name="year" value=""/>
-            <span>[Hier komt de eventuele error]</span>
-        </div>
-        <div>
-            <label for="tracks">Tracks</label>
-            <input id="tracks" type="number" name="tracks" value=""/>
-            <span>[Hier komt de eventuele error]</span>
+            <label for="email">Emailadres</label>
+            <input id="email" type="email" name="email" value="" required/>
+            <span><?= $error == 'Emailadres invalid!' ? $error : '' ?></span>
         </div>
         <div>
             <input type="submit" name="submit" value="Save"/>
