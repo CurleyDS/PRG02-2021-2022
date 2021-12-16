@@ -7,9 +7,9 @@ $result = mysqli_query($db, $sql);
 $trials = mysqli_fetch_all($result, MYSQLI_ASSOC);
 session_start();
 $error = null;
-if (isset($_SESSION['message'])) {
-    $error = $_SESSION['message'];
-    unset($_SESSION['message']);
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
 }
 
 ?>
@@ -22,6 +22,7 @@ if (isset($_SESSION['message'])) {
 </head>
 <body>
 <h1>Trials</h1>
+<?= $error == 'Something went wrong canceling your trial!' ? $error : '' ?>
 <a href="create.php">Add new trial</a>
 <table>
     <thead>
@@ -35,11 +36,6 @@ if (isset($_SESSION['message'])) {
         <th colspan="2"></th>
     </tr>
     </thead>
-    <tfoot>
-    <tr>
-        <td colspan="9">&copy; My Trials</td>
-    </tr>
-    </tfoot>
     <tbody>
         <?php foreach ($trials as $index => $trial) { ?>
             <tr>
@@ -55,6 +51,11 @@ if (isset($_SESSION['message'])) {
             </tr>
         <?php } ?>
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="9">&copy; My Trials</td>
+        </tr>
+    </tfoot>
 </table>
 </body>
 </html>

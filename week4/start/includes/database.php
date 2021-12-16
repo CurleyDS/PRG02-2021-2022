@@ -22,26 +22,26 @@ $db = mysqli_connect($host, $user, $password, $database)
         } else {
             if (empty($_POST['lesson'])) {
                 session_start();
-                $_SESSION['message'] = "Lesson invalid!";
+                $_SESSION['error'] = "Lesson invalid!";
                 redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/create.php", false);
             }
             if (empty($_POST['name'])) {
                 session_start();
-                $_SESSION['message'] = "Name invalid!";
+                $_SESSION['error'] = "Name invalid!";
                 redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/create.php", false);
             }
             if (empty($_POST['phone'])) {
                 session_start();
-                $_SESSION['message'] = "Phone number invalid!";
+                $_SESSION['error'] = "Phone number invalid!";
                 redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/create.php", false);
             }
             if (empty($_POST['email']) && preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST['email'])) {
                 session_start();
-                $_SESSION['message'] = "Emailadres invalid!";
+                $_SESSION['error'] = "Emailadres invalid!";
                 redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/create.php", false);
             }
             session_start();
-            $_SESSION['message'] = "Something went wrong!";
+            $_SESSION['error'] = "Something went wrong!";
             redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/create.php", false);
         }
     }
@@ -52,7 +52,7 @@ $db = mysqli_connect($host, $user, $password, $database)
             $result = mysqli_query($db, $sql);
         } else {
             session_start();
-            $_SESSION['message'] = "Something went wrong canceling your trial!";
+            $_SESSION['error'] = "Something went wrong canceling your trial!";
             redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/index.php", false);
         }
     }
