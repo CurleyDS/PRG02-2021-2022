@@ -35,7 +35,7 @@ $db = mysqli_connect($host, $user, $password, $database)
                 $_SESSION['message'] = "Phone number invalid!";
                 redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/create.php", false);
             }
-            if (empty($_POST['email'])) {
+            if (empty($_POST['email']) && preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $_POST['email'])) {
                 session_start();
                 $_SESSION['message'] = "Emailadres invalid!";
                 redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/create.php", false);
@@ -46,7 +46,22 @@ $db = mysqli_connect($host, $user, $password, $database)
         }
     }
 
+    function deleteTrial(mysqli $db) {
+        if (!empty($_GET['id'])) {
+            $sql = "DELETE FROM `trials` WHERE id=" . $_GET['id'];
+            $result = mysqli_query($db, $sql);
+        } else {
+            session_start();
+            $_SESSION['message'] = "Something went wrong canceling your trial!";
+            redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/index.php", false);
+        }
+    }
+
     if ($_GET['function'] == 'addTrial') {
         addTrial($db);
+        redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/index.php", false);
+    }
+    if ($_GET['function'] == 'deleteTrial') {
+        deleteTrial($db);
         redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/index.php", false);
     }

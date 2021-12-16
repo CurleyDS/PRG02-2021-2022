@@ -5,6 +5,12 @@ $sql = "SELECT * FROM trials";
 $result = mysqli_query($db, $sql);
 
 $trials = mysqli_fetch_all($result, MYSQLI_ASSOC);
+session_start();
+$error = null;
+if (isset($_SESSION['message'])) {
+    $error = $_SESSION['message'];
+    unset($_SESSION['message']);
+}
 
 ?>
 <!doctype html>
