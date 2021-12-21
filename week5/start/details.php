@@ -12,10 +12,10 @@ if(!isset($_GET['id']) || $_GET['id'] == '') {
 require_once "includes/database.php";
 
 //Retrieve the GET parameter from the 'Super global'
-$albumId = mysqli_escape_string($db, $_GET['id']);
+$trialId = mysqli_escape_string($db, $_GET['id']);
 
 //Get the record from the database result
-$query = "SELECT * FROM albums WHERE id = '$albumId'";
+$query = "SELECT * FROM trials WHERE id = '$trialId'";
 $result = mysqli_query($db, $query)
     or die ('Error: ' . $query );
 
@@ -26,7 +26,7 @@ if(mysqli_num_rows($result) != 1)
     exit;
 }
 
-$album = mysqli_fetch_assoc($result);
+$trial = mysqli_fetch_assoc($result);
 
 //Close connection
 mysqli_close($db);
@@ -34,20 +34,19 @@ mysqli_close($db);
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Music Collection Details</title>
+    <title>Salsa Dance Trial Details</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-<h1><?= $album['artist'] . ' - ' . $album['name'] ?></h1>
+<h1><?= $trial['lesson_id'] . ' - ' . $trial['name'] ?></h1>
 
 <div>
-    <img src="images/<?= $album['image'] ?>" alt=""/>
+    <img src="images/" alt=""/>
 </div>
 <ul>
-    <li>Genre:  <?= $album['genre'] ?></li>
-    <li>Year:   <?= $album['year'] ?></li>
-    <li>Tracks: <?= $album['tracks'] ?></li>
+    <li>Phone number:  <?= $trial['phone'] ?></li>
+    <li>Emailadres:   <?= $trial['email'] ?></li>
 </ul>
 <div>
     <a href="index.php">Go back to the list</a>

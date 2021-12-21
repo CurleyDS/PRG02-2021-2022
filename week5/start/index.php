@@ -5,13 +5,13 @@
 require_once "includes/database.php";
 
 //Get the result set from the database with a SQL query
-$query = "SELECT * FROM albums";
+$query = "SELECT * FROM trials";
 $result = mysqli_query($db, $query) or die ('Error: ' . $query );
 
 //Loop through the result to create a custom array
-$musicAlbums = [];
+$trials = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $musicAlbums[] = $row;
+    $trials[] = $row;
 }
 
 //Close connection
@@ -20,43 +20,40 @@ mysqli_close($db);
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Music Collection</title>
+    <title>Salsa Dance Trial Lessons</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-<h1>Music Collection</h1>
-<a href="create.php">Create new album</a>
+<h1>Trials</h1>
+<a href="create.php">Add new trial</a>
 <table>
     <thead>
     <tr>
-        <th></th>
         <th>#</th>
-        <th>Artist</th>
-        <th>Album</th>
-        <th>Genre</th>
-        <th>Year</th>
-        <th>Tracks</th>
+        <th>Lesson</th>
+        <th>Name</th>
+        <th>Phone number</th>
+        <th>Emailadres</th>
         <th colspan="3"></th>
     </tr>
     </thead>
     <tfoot>
     <tr>
-        <td colspan="10">&copy; My Collection</td>
+        <td colspan="10">&copy; My Trials</td>
     </tr>
     </tfoot>
     <tbody>
-    <?php foreach ($musicAlbums as $musicAlbum) { ?>
+    <?php foreach ($trials as $index => $trial) { ?>
         <tr>
-            <td><?= $musicAlbum['id'] ?></td>
-            <td><?= $musicAlbum['artist'] ?></td>
-            <td><?= $musicAlbum['name'] ?></td>
-            <td><?= $musicAlbum['genre'] ?></td>
-            <td><?= $musicAlbum['year'] ?></td>
-            <td><?= $musicAlbum['tracks'] ?></td>
-            <td><a href="details.php?id=<?= $musicAlbum['id'] ?>">Details</a></td>
-            <td><a href="">Edit</a></td>
-            <td><a href="delete.php?id=<?= $musicAlbum['id'] ?>">Delete</a></td>
+            <td><?= $index+1 ?></td>
+            <td><?= $trial['lesson_id'] ?></td>
+            <td><?= $trial['name'] ?></td>
+            <td><?= $trial['phone'] ?></td>
+            <td><?= $trial['email'] ?></td>
+            <td><a href="details.php?id=<?= $trial['id'] ?>">Details</a></td>
+            <td><a href="edit.php?id=<?= $trial['id'] ?>">Edit</a></td>
+            <td><a href="delete.php?id=<?= $trial['id'] ?>">Delete</a></td>
         </tr>
     <?php } ?>
     </tbody>
