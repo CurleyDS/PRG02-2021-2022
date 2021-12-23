@@ -20,11 +20,11 @@ if (isset($_POST['submit'])) {
     // if ($_FILES['image']['error'] == 4) {
     //     $errors['image'] = 'Image cannot be empty';
     // }
-
+    
     if (empty($errors)) {
         //Store image & retrieve name for database saving
         // $image = addImageFile($_FILES['image']);
-
+        
         //Save the record to the database
         $query = "INSERT INTO trials (lesson_id, name, phone, email)
                   VALUES ('$lesson_id', '$name', '$phone', '$email')";

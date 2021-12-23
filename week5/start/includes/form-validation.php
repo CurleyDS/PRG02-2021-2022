@@ -1,29 +1,23 @@
 <?php
 //Check if data is valid & generate error if not so
 $errors = [];
-if ($artist == "") {
-    $errors['artist'] = 'Artist cannot be empty';
+if ($lesson_id == "") {
+    $errors['lesson_id'] = 'Lesson must be chosen';
 }
 if ($name == "") {
-    $errors['name'] = 'Album cannot be empty';
+    $errors['name'] = 'Name cannot be empty';
 }
-if ($genre == "") {
-    $errors['genre'] = 'Genre cannot be empty';
+if (!is_numeric(preg_replace('/[\s]+/', '', $phone))) {
+    $errors['phone'] = 'Phone cannot contain letters';
 }
-if (!is_numeric($year) || strlen($year) != 4) {
-    $errors['year'] = 'Year needs to be a number with the length of 4';
+// this error message wil overwrite the previous error when phone is empty
+if ($phone == "") {
+    $errors['phone'] = 'Phone cannot be empty';
 }
-// this error message wil overwrite the previous error when year is empty
-if ($year == "") {
-    $errors['year'] = 'Year cannot be empty';
+if (preg_match("/[a-zA-Z0-9_-.+]+@[a-zA-Z0-9-]+.[a-zA-Z]+/", $email)) {
+    $errors['email'] = 'Email invalid';
 }
-if (!is_numeric($tracks)) {
-    $errors['tracks'] = 'Tracks need to be a number';
-}
-if ($tracks > 255) {
-    $errors['tracks'] = 'The amount of tracks must be less then 255';
-}
-// this error message wil overwrite the previous error when tracks is empty
-if ($tracks == "") {
-    $errors['tracks'] = 'Tracks cannot be empty';
+// this error message wil overwrite the previous error when email is empty
+if ($email == "") {
+    $errors['email'] = 'Email cannot be empty';
 }

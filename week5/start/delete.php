@@ -9,19 +9,19 @@ if (isset($_POST['submit'])) {
     // DELETE IMAGE
     // To remove the image we need to query the file name from the db.
     // Get the record from the database result
-    $albumId = mysqli_escape_string($db, $_POST['id']);
-    $query = "SELECT * FROM albums WHERE id = '$albumId'";
+    $trialId = mysqli_escape_string($db, $_POST['id']);
+    $query = "SELECT * FROM trials WHERE id = '$trialId'";
     $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
-    $album = mysqli_fetch_assoc($result);
+    $trial = mysqli_fetch_assoc($result);
 
-    if (!empty($album['image'])) {
-        deleteImageFile($album['image']);
-    }
+    // if (!empty($trial['image'])) {
+    //     deleteImageFile($trial['image']);
+    // }
 
     // DELETE DATA
-    // Remove the album data from the database with the existing albumId
-    $query = "DELETE FROM albums WHERE id = '$albumId'";
+    // Remove the trial data from the database with the existing trialId
+    $query = "DELETE FROM trials WHERE id = '$trialId'";
     mysqli_query($db, $query) or die ('Error: ' . mysqli_error($db));
 
     //Close connection
@@ -33,14 +33,14 @@ if (isset($_POST['submit'])) {
 
 } else if (isset($_GET['id']) || $_GET['id'] != '') {
     //Retrieve the GET parameter from the 'Super global'
-    $albumId = mysqli_escape_string($db, $_GET['id']);
+    $trialId = mysqli_escape_string($db, $_GET['id']);
 
     //Get the record from the database result
-    $query = "SELECT * FROM albums WHERE id = '$albumId'";
+    $query = "SELECT * FROM trials WHERE id = '$trialId'";
     $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
     if (mysqli_num_rows($result) == 1) {
-        $album = mysqli_fetch_assoc($result);
+        $trial = mysqli_fetch_assoc($result);
     } else {
         // redirect when db returns no result
         header('Location: index.php');
@@ -61,16 +61,19 @@ if (isset($_POST['submit'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Delete - <?= $album['name'] ?></title>
+    <title>Delete - <?= $trial['lesson_id'] ?></title>
 </head>
 <body>
-<h2>Delete - <?= $album['name'] ?></h2>
+<h2>Delete - <?= $trial['lesson_id'] ?></h2>
 <form action="" method="post">
     <p>
-        Weet u zeker dat u het album "<?= $album['name'] ?>" wilt verwijderen?
+        Weet u zeker dat u de trial voor les "<?= $trial['lesson_id'] ?>" wilt verwijderen?
     </p>
-    <input type="hidden" name="id" value="<?= $album['id'] ?>"/>
+    <input type="hidden" name="id" value="<?= $trial['id'] ?>"/>
     <input type="submit" name="submit" value="Verwijderen"/>
 </form>
+<div>
+    <a href="index.php">Go back to the list</a>
+</div>
 </body>
 </html>
