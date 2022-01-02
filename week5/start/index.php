@@ -5,13 +5,13 @@
 require_once "includes/database.php";
 
 //Get the result set from the database with a SQL query
-$query = "SELECT * FROM trials";
+$query = "SELECT * FROM reservations";
 $result = mysqli_query($db, $query) or die ('Error: ' . $query );
 
 //Loop through the result to create a custom array
-$trials = [];
+$reservations = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $trials[] = $row;
+    $reservations[] = $row;
 }
 
 //Close connection
@@ -20,13 +20,13 @@ mysqli_close($db);
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Salsa Dance Trial Lessons</title>
+    <title>Salsa Dance Reservation Lessons</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-<h1>Trials</h1>
-<a href="create.php">Add new trial</a>
+<h1>reservations</h1>
+<a href="create.php">Add new reservation</a>
 <table>
     <thead>
     <tr>
@@ -40,20 +40,20 @@ mysqli_close($db);
     </thead>
     <tfoot>
     <tr>
-        <td colspan="10">&copy; My Trials</td>
+        <td colspan="10">&copy; My Reservations</td>
     </tr>
     </tfoot>
     <tbody>
-    <?php foreach ($trials as $index => $trial) { ?>
+    <?php foreach ($reservations as $index => $reservation) { ?>
         <tr>
             <td><?= $index+1 ?></td>
-            <td><?= $trial['lesson_id'] ?></td>
-            <td><?= $trial['name'] ?></td>
-            <td><?= $trial['phone'] ?></td>
-            <td><?= $trial['email'] ?></td>
-            <td><a href="details.php?id=<?= $trial['id'] ?>">Details</a></td>
-            <td><a href="edit.php?id=<?= $trial['id'] ?>">Edit</a></td>
-            <td><a href="delete.php?id=<?= $trial['id'] ?>">Delete</a></td>
+            <td><?= $reservation['lesson_id'] ?></td>
+            <td><?= $reservation['name'] ?></td>
+            <td><?= $reservation['phone'] ?></td>
+            <td><?= $reservation['email'] ?></td>
+            <td><a href="details.php?id=<?= $reservation['id'] ?>">Details</a></td>
+            <td><a href="edit.php?id=<?= $reservation['id'] ?>">Edit</a></td>
+            <td><a href="delete.php?id=<?= $reservation['id'] ?>">Delete</a></td>
         </tr>
     <?php } ?>
     </tbody>

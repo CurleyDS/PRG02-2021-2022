@@ -14,9 +14,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-    <h1>Add trial</h1>
+    <h1>Add reservation</h1>
 
-    <form action="index.php?function=addTrial" method="post">
+    <form action="index.php?function=addReservation" method="post">
         <div>
             <label for="lesson">Lesson:</label>
             <input id="lesson" type="number" name="lesson" min="1" required/>

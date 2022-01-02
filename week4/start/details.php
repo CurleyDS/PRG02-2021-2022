@@ -3,28 +3,28 @@
 require_once "includes/database.php";
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM trials WHERE id = '$id'";
+$sql = "SELECT * FROM reservations WHERE id = '$id'";
 $result = mysqli_query($db, $sql);
 
-$trial = mysqli_fetch_assoc($result);
+$reservation = mysqli_fetch_assoc($result);
 ?>
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Trial Details</title>
+    <title>Reservation Details</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-<h1><?= $trial['lesson_id']; ?></h1>
+<h1><?= $reservation['lesson_id']; ?></h1>
 
 <div>
     <img src="" alt=""/>
 </div>
 <ul>
-    <li>Name: <?= $trial['name']; ?></li>
-    <li>Phone number: <?= $trial['phone']; ?></li>
-    <li>Emailadres: <?= $trial['email']; ?></li>
+    <li>Name: <?= $reservation['name']; ?></li>
+    <li>Phone number: <?= $reservation['phone']; ?></li>
+    <li>Emailadres: <?= $reservation['email']; ?></li>
 </ul>
 <div>
     <a href="index.php">Go back to the list</a>

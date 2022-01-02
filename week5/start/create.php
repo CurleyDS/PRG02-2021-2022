@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         // $image = addImageFile($_FILES['image']);
         
         //Save the record to the database
-        $query = "INSERT INTO trials (lesson_id, name, phone, email)
+        $query = "INSERT INTO reservations (lesson_id, name, phone, email)
                   VALUES ('$lesson_id', '$name', '$phone', '$email')";
         $result = mysqli_query($db, $query) or die('Error: '.mysqli_error($db). ' with query ' . $query);
 
@@ -45,12 +45,12 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Salsa Dance Trial Add</title>
+    <title>Salsa Dance Reservation Add</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
-<h1>Add Trial</h1>
+<h1>Add Reservation</h1>
 <?php if (isset($errors['db'])) { ?>
     <div><span class="errors"><?= $errors['db']; ?></span></div>
 <?php } ?>

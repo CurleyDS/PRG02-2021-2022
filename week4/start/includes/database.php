@@ -15,9 +15,9 @@ $db = mysqli_connect($host, $user, $password, $database)
         die();
     }
 
-    function addTrial(mysqli $db) {
+    function addReservation(mysqli $db) {
         if (!empty($_POST['lesson']) && !empty($_POST['name']) && !empty($_POST['phone']) && !empty($_POST['email'])) {
-            $sql = "INSERT INTO `trials` (lesson_id, name, phone, email) VALUES (" . $_POST['lesson'] . ", '" . $_POST['name'] . "', '" . $_POST['phone'] . "', '" . $_POST['email'] . "')";
+            $sql = "INSERT INTO `reservations` (lesson_id, name, phone, email) VALUES (" . $_POST['lesson'] . ", '" . $_POST['name'] . "', '" . $_POST['phone'] . "', '" . $_POST['email'] . "')";
             $result = mysqli_query($db, $sql);
         } else {
             if (empty($_POST['lesson'])) {
@@ -46,22 +46,22 @@ $db = mysqli_connect($host, $user, $password, $database)
         }
     }
 
-    function deleteTrial(mysqli $db) {
+    function deleteReservation(mysqli $db) {
         if (!empty($_GET['id'])) {
-            $sql = "DELETE FROM `trials` WHERE id=" . $_GET['id'];
+            $sql = "DELETE FROM `reservations` WHERE id=" . $_GET['id'];
             $result = mysqli_query($db, $sql);
         } else {
             session_start();
-            $_SESSION['error'] = "Something went wrong canceling your trial!";
+            $_SESSION['error'] = "Something went wrong canceling your reservation!";
             redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/index.php", false);
         }
     }
 
-    if ($_GET['function'] == 'addTrial') {
-        addTrial($db);
+    if ($_GET['function'] == 'addReservation') {
+        addReservation($db);
         redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/index.php", false);
     }
-    if ($_GET['function'] == 'deleteTrial') {
-        deleteTrial($db);
+    if ($_GET['function'] == 'deleteReservation') {
+        deleteReservation($db);
         redirect("http://" . $_SERVER['HTTP_HOST'] . "/PRG02-2021-2022/week4/start/index.php", false);
     }

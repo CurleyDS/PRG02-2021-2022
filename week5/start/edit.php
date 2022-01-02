@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
         // $image = addImageFile($_FILES['image']);
         
         //Save the record to the database
-        $query = "UPDATE trials
+        $query = "UPDATE reservations
                   SET lesson_id='$lesson_id', name='$name', phone='$phone', email='$email'
                   WHERE id=$id";
         $result = mysqli_query($db, $query) or die('Error: '.mysqli_error($db). ' with query ' . $query);
@@ -44,14 +44,14 @@ if (isset($_POST['submit'])) {
     }
 } else if (isset($_GET['id']) || $_GET['id'] != '') {
     //Retrieve the GET parameter from the 'Super global'
-    $trialId = mysqli_escape_string($db, $_GET['id']);
+    $reservationId = mysqli_escape_string($db, $_GET['id']);
 
     //Get the record from the database result
-    $query = "SELECT * FROM trials WHERE id = '$trialId'";
+    $query = "SELECT * FROM reservations WHERE id = '$reservationId'";
     $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
     if (mysqli_num_rows($result) == 1) {
-        $trial = mysqli_fetch_assoc($result);
+        $reservation = mysqli_fetch_assoc($result);
     } else {
         // redirect when db returns no result
         header('Location: index.php');
@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Salsa Dance Trial Edit</title>
+    <title>Salsa Dance Reservation Edit</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
@@ -82,22 +82,22 @@ if (isset($_POST['submit'])) {
 <form action="" method="post" enctype="multipart/form-data">
 <div class="data-field">
         <label for="lesson_id">Lesson</label>
-        <input id="lesson_id" type="number" name="lesson_id" value="<?= isset($lesson_id) ? htmlentities($lesson_id) : $trial['lesson_id'] ?>" min="1"/>
+        <input id="lesson_id" type="number" name="lesson_id" value="<?= isset($lesson_id) ? htmlentities($lesson_id) : $reservation['lesson_id'] ?>" min="1"/>
         <span class="errors"><?= $errors['lesson_id'] ?? '' ?></span>
     </div>
     <div class="data-field">
         <label for="name">Name</label>
-        <input id="name" type="text" name="name" value="<?= isset($name) ? htmlentities($name) : $trial['name'] ?>"/>
+        <input id="name" type="text" name="name" value="<?= isset($name) ? htmlentities($name) : $reservation['name'] ?>"/>
         <span class="errors"><?= isset($errors['name']) ? $errors['name'] : '' ?></span>
     </div>
     <div class="data-field">
         <label for="phone">Phone number</label>
-        <input id="phone" type="text" name="phone" value="<?= isset($phone) ? htmlentities($phone) : $trial['phone'] ?>"/>
+        <input id="phone" type="text" name="phone" value="<?= isset($phone) ? htmlentities($phone) : $reservation['phone'] ?>"/>
         <span class="errors"><?= isset($errors['phone']) ? $errors['phone'] : '' ?></span>
     </div>
     <div class="data-field">
         <label for="email">Email</label>
-        <input id="email" type="text" name="email" value="<?= isset($email) ? htmlentities($email) : $trial['email'] ?>"/>
+        <input id="email" type="text" name="email" value="<?= isset($email) ? htmlentities($email) : $reservation['email'] ?>"/>
         <span class="errors"><?= isset($errors['email']) ? $errors['email'] : '' ?></span>
     </div>
     <!-- <div class="data-field">
@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
         <span class="errors"><?= isset($errors['image']) ? $errors['image'] : '' ?></span>
     </div> -->
     <div class="data-submit">
-        <input type="hidden" name="id" value="<?= $trial['id'] ?>"/>
+        <input type="hidden" name="id" value="<?= $reservation['id'] ?>"/>
         <input type="submit" name="submit" value="Save"/>
     </div>
 </form>
