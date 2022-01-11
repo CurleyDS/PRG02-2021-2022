@@ -1,5 +1,21 @@
 <?php
+/** @var mysqli $db */
 
+//Require DB settings with connection variable
+require_once "includes/database.php";
+
+//Get the result set from the database with a SQL query
+$query = "SELECT * FROM albums";
+$result = mysqli_query($db, $query) or die ('Error: ' . $query );
+
+//Loop through the result to create a custom array
+$musicAlbums = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $musicAlbums[] = $row;
+}
+
+//Close connection
+mysqli_close($db);
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,26 +37,26 @@
         <th>Genre</th>
         <th>Year</th>
         <th>Tracks</th>
-        <th colspan="2"></th>
+        <th colspan="3"></th>
     </tr>
     </thead>
     <tfoot>
     <tr>
-        <td colspan="9">&copy; My Collection</td>
+        <td colspan="10">&copy; My Collection</td>
     </tr>
     </tfoot>
     <tbody>
-    <?php foreach ($albums as $album) { ?>
+    <?php foreach ($musicAlbums as $musicAlbum) { ?>
         <tr>
-            <td class="image"><img src="images/<?= $album['image']; ?>" alt="<?= $album['name']; ?>"/></td>
-            <td><?= $album['id']; ?></td>
-            <td><?= $album['artist']; ?></td>
-            <td><?= $album['name']; ?></td>
-            <td><?= $album['genre']; ?></td>
-            <td><?= $album['year']; ?></td>
-            <td><?= $album['tracks']; ?></td>
-            <td><a href="details.php?id=<?= $album['id']; ?>">Details</a></td>
-            <td><a href="edit.php?id=<?= $album['id']; ?>">Edit</a></td>
+            <td><?= $musicAlbum['id'] ?></td>
+            <td><?= $musicAlbum['artist'] ?></td>
+            <td><?= $musicAlbum['name'] ?></td>
+            <td><?= $musicAlbum['genre'] ?></td>
+            <td><?= $musicAlbum['year'] ?></td>
+            <td><?= $musicAlbum['tracks'] ?></td>
+            <td><a href="details.php?id=<?= $musicAlbum['id'] ?>">Details</a></td>
+            <td><a href="">Edit</a></td>
+            <td><a href="delete.php?id=<?= $musicAlbum['id'] ?>">Delete</a></td>
         </tr>
     <?php } ?>
     </tbody>
