@@ -55,12 +55,12 @@ class AlbumHandler extends BaseHandler
         $this->executePostHandler();
 
         //Special check for add form only
-        if ($_FILES['image']['error'] == 4) {
+        if (isset($this->formData) && $_FILES['image']['error'] == 4) {
             $this->errors[] = 'Image cannot be empty';
         }
 
         //Database magic when no errors are found
-        if (empty($this->errors)) {
+        if (isset($this->formData) && empty($this->errors)) {
             //Store image & retrieve name for database saving
             $this->album->image = 'images/' . $this->image->save($_FILES['image']);
 
@@ -94,7 +94,7 @@ class AlbumHandler extends BaseHandler
             $this->executePostHandler();
 
             //Database magic when no errors are found
-            if (empty($this->errors)) {
+            if (isset($this->formData) && empty($this->errors)) {
                 //If image is not empty, process the new image file
                 if ($_FILES['image']['error'] != 4) {
                     //Remove old image
